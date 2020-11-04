@@ -35,10 +35,22 @@ PHP Store
     
     function tax_calc($amount,$tax){
         $calculate_tax = $amount*$tax;
-        $amount = round($amount+$calculate_tax,2);
-        return $amount;
+        $amountwithtax = round($amount+$calculate_tax,2);
+        return $amountwithtax;
     }
-    echo tax_calc(750,0.223);
+    foreach($products as $key => $value){
+        $costwithtax=tax_calc($value,$taxrate);
+        echo "<p>".$key." costs ".$costwithtax." with tax";
+    }
+
+    echo "<h2>Items you can afford</h2>";
+
+    foreach($products as $key => $value){
+        $costWithTax = tax_calc($value,$taxrate);
+        if($costWithTax <= $credit ){
+            echo "<p>".$key."</p>"; 
+        }
+    }
     ?>
 </body>
 </html>
