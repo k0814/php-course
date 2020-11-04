@@ -25,9 +25,20 @@ PHP Store
     echo "<h2>ITEMS YOU CAN AFFORD:</h2>";
     foreach($products as $key => $value){
         if($value <= $credit){
-            echo "<p>".$key."</p>";
+            echo "<p>".$key."/n</p>";
         }
     }
+    $amount=800;
+    $taxrate=0.0825;
+    $addedtax=$amount*$taxrate;
+    echo $addedtax;
+    
+    function tax_calc($amount,$tax){
+        $calculate_tax = $amount*$tax;
+        $amount = round($amount+$calculate_tax,2);
+        return $amount;
+    }
+    echo tax_calc(750,0.223);
     ?>
 </body>
 </html>
