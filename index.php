@@ -22,6 +22,12 @@ PHP Store
     foreach($products as $key => $value){
         echo "<p>The value of a ".$key." is ".$value."!!</p>";
     }
+    echo "<h2>ITEMS YOU CAN AFFORD:</h2>";
+    foreach($products as $key => $value){
+        if($value <= $credit){
+            echo "<p>".$key."</p>";
+        }
+    }
     ?>
 </body>
 </html>
